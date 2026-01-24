@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Noir | Développeur Junior Web & Mobile</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #b0b0b0;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --card-hover: #222222;
+            --border-color: #333;
+            --success-color: #2ecc71;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--secondary-color);
+            line-height: 1.6;
+            background-color: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            padding: 8px 15px !important;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color) !important;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        #hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            padding: 150px 0 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero:before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            top: 50px;
+            right: -100px;
+            border-radius: 50%;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--accent-color), transparent) border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+            border: none;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+
+        .btn-outline-primary {
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--accent-color);
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            background: linear-gradient(45deg, #128C7E, #25D366);
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: var(--card-hover);
+            border-color: rgba(52, 152, 219, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        .project-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-color), transparent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(52, 152, 219, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-right: 20px;
+            min-width: 50px;
+        }
+
+        .project-card-body {
+            padding: 0;
+        }
+
+        .tech-badge {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent-color);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--card-bg);
+            color: var(--secondary-color);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icon {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin: 0 12px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            background: rgba(52, 152, 219, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-icon {
+            color: #25D366;
+        }
+
+        .whatsapp-icon:hover {
+            color: #25D366;
+            background: rgba(37, 211, 102, 0.1);
+        }
+
+        .email-icon {
+            color: #3498db;
+        }
+
+        .email-icon:hover {
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .progress {
+            height: 10px;
+            margin: 15px 0 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .bg-light-custom {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .list-unstyled li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .list-unstyled li:before {
+            content: '▸';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h5 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .skill-list li:before {
+            content: '▸';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        .junior-tag {
+            background: rgba(52, 152, 219, 0.2);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-left: 10px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 30px;
+            }
+            
+            .contact-info {
+                padding: 25px;
+            }
+            
+            .skill-card {
+                padding: 25px 20px;
+            }
+            
+            .project-card {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn-primary, .btn-outline-primary, .btn-success {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .project-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-code me-2"></i>Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 text-center text-lg-start mb-5 mb-lg-0">
+                    <div class="floating">
+                        <img src="images/profil.jpeg" alt="Photo de profil" class="profile-img">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h1 class="hero-title">Souangah Yao Jean Serge</h1>
+                    <p class="hero-subtitle">Développeur Junior Full-Stack 
+                        <span class="junior-tag">Junior</span>
+                    </p>
+                    <p class="lead mb-4">Jeune développeur passionné de 22 ans, je crée des applications web et mobiles avec enthousiasme et rigueur. Curieux et motivé, je cherche à apprendre et progresser chaque jour.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <a href="https://wa.me/2250150961134?text=Bonjour%20Souangah%2C%20je%20viens%20de%20voir%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d'un%20projet." 
+                           target="_blank" 
+                           class="btn btn-success">
+                            <i class="fab fa-whatsapp me-2"></i>Me contacter sur WhatsApp
+                        </a>
+                        <!-- Si le CV est dans un dossier "docs" à côté de index.html -->
+                        <a href="docs/cv.pdf" download="Souangah_Yao_CV.pdf" class="btn btn-outline-primary">
+                            <i class="fas fa-download me-2"></i>Télécharger CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="about-content">
+                        <p class="mb-4">
+                            Passionné par le développement web et mobile, je m'appelle 
+                            <span class="about-highlight">Souangah Yao Jean Serge</span>, 
+                            un développeur junior de 22 ans originaire de Bouaké, en Côte d'Ivoire.
+                        </p>
+                        
+                        <p class="mb-4">
+                            Bien que débutant dans le monde professionnel, je possède déjà une solide base technique 
+                            et une grande passion pour la programmation. J'ai développé plusieurs projets personnels 
+                            qui m'ont permis d'acquérir des compétences pratiques en développement 
+                            <span class="about-highlight">web et mobile</span>.
+                        </p>
+                        
+                        <div class="row mt-5">
+                            <div class="col-md-6 mb-4">
+                                <h4 class="mb-4">
+                                    <i class="fas fa-rocket me-2 text-accent"></i>
+                                    Mon approche
+                                </h4>
+                                <div class="card bg-card-bg border border-border-color p-3">
+                                    <p class="mb-0">
+                                        En tant que junior, j'apporte un regard neuf, de l'enthousiasme et 
+                                        une grande volonté d'apprendre. Je suis rigoureux, curieux et prêt à 
+                                        m'investir pleinement dans chaque projet.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h4 class="mb-4">
+                                    <i class="fas fa-heart me-2 text-accent"></i>
+                                    Ce qui me motive
+                                </h4>
+                                <div class="card bg-card-bg border border-border-color p-3">
+                                    <p class="mb-0">
+                                        Apprendre continuellement, résoudre des problèmes concrets et 
+                                        contribuer à des projets innovants. Je suis avide de nouvelles 
+                                        connaissances et expériences.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="mt-4">
+                            Je recherche actuellement une opportunité en alternance, stage ou premier emploi 
+                            pour mettre en pratique mes compétences et continuer à progresser. 
+                            <span class="about-highlight">N'hésitez pas à me contacter</span> pour discuter 
+                            de votre projet ou d'une opportunité !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-light-custom">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <div class="row g-4">
+                <!-- Développement Web -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="mb-3">Développement Web</h4>
+                        <div class="skill-category">
+                            <ul class="skill-list">
+                                <li>HTML / CSS</li>
+                                <li>Bootstrap</li>
+                                <li>PHP (Bases)</li>
+                                <li>JavaScript (Bases)</li>
+                                <li>MySQL</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Niveau</span>
+                            <span class="text-accent">65%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Développement Mobile -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4 class="mb-3">Développement Mobile</h4>
+                        <div class="skill-category">
+                            <ul class="skill-list">
+                                <li>React Native (Bases)</li>
+                                <li>Intégration API</li>
+                                <li>Navigation</li>
+                                <li>JavaScript</li>
+                                <li>API REST</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Niveau</span>
+                            <span class="text-accent">60%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back-end -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4 class="mb-3">Back-end & BDD</h4>
+                        <div class="skill-category">
+                            <ul class="skill-list">
+                                <li>PHP / MySQL</li>
+                                <li>Architecture MVC</li>
+                                <li>API REST (Bases)</li>
+                                <li>Gestion des données</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Niveau</span>
+                            <span class="text-accent">68%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 68%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft skills -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4 class="mb-3">Soft Skills & Outils</h4>
+                        <div class="skill-category">
+                            <ul class="skill-list">
+                                <li>Git / GitHub</li>
+                                <li>Travail d'équipe</li>
+                                <li>Curiosité</li>
+                                <li>Adaptabilité</li>
+                                <li>Apprentissage rapide</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Niveau</span>
+                            <span class="text-accent">75%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Mes Projets Personnels</h2>
+            <div class="row g-4">
+                <!-- Projet 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-2">Gestion des Tâches</h4>
+                                <span class="badge bg-accent">Projet d'apprentissage</span>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <p class="text-secondary mb-3">Première application web complète développée avec PHP et MySQL. Gestion CRUD des tâches avec interface Bootstrap.</p>
+                            <div class="mb-4">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">Bootstrap</span>
+                                <span class="tech-badge">CRUD</span>
+                            </div>
+                            <a href="https://epencia.net/app/souangah/wave" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-external-link-alt me-1"></i>Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-2">App Mobile</h4>
+                                <span class="badge bg-accent">Première app mobile</span>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <p class="text-secondary mb-3">Découverte de React Native avec une application simple. Apprentissage des composants et navigation.</p>
+                            <div class="mb-4">
+                                <span class="tech-badge">React Native</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">Navigation</span>
+                                <span class="tech-badge">UI/UX</span>
+                            </div>
+                            <a href="https://epencia.net/rapport" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-external-link-alt me-1"></i>Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-2">API REST</h4>
+                                <span class="badge bg-accent">Projet éducatif</span>
+                            </div>
+                        </div>
+                        <div class="project-card-body">
+                            <p class="text-secondary mb-3">Création d'une API simple pour comprendre les principes REST. Authentification basique et gestion des données.</p>
+                            <div class="mb-4">
+                                <span class="tech-badge">PHP</span>
+                                <span class="tech-badge">API REST</span>
+                                <span class="tech-badge">JSON</span>
+                                <span class="tech-badge">MySQL</span>
+                            </div>
+                            <a href="https://epencia.net/s-finance" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-external-link-alt me-1"></i>Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light-custom">
+        <div class="container">
+            <h2 class="section-title">Travaillons ensemble</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-info fade-in">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-whatsapp whatsapp-icon"></i>
+                                    </div>
+                                    <h4>WhatsApp</h4>
+                                    <p class="text-secondary mb-3">Contact rapide et direct</p>
+                                    <a href="https://wa.me/2250150961134?text=Bonjour%20Souangah%2C%20je%20viens%20de%20voir%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d'une%20opportunit%C3%A9." 
+                                       target="_blank" 
+                                       class="btn btn-success">
+                                        <i class="fab fa-whatsapp me-2"></i>Envoyer un message
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope email-icon"></i>
+                                    </div>
+                                    <h4>Email</h4>
+                                    <p class="text-secondary mb-3">Pour les demandes détaillées</p>
+                                    <a href="mailto:souangahy@gmail.com?subject=Contact%20-%20Portfolio%20D%C3%A9veloppeur%20Junior&body=Bonjour%20Souangah%2C%0A%0AJe%20viens%20de%20voir%20votre%20portfolio%20et%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20votre%20profil%20de%20d%C3%A9veloppeur%20junior.%0A%0APouvons-nous%20en%20discuter%20%3F%0A%0ACordialement%2C" 
+                                       class="btn btn-primary">
+                                        <i class="fas fa-envelope me-2"></i>Envoyer un email
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h5>Recherche active</h5>
+                            <p class="text-secondary">
+                                Je recherche activement un stage, une alternance ou un premier emploi 
+                                en développement web/mobile. Motivé et prêt à apprendre, je m'adapte 
+                                rapidement aux nouvelles technologies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <h4 class="mb-3">Portfolio Développeur Junior</h4>
+                    <p class="mb-0">&copy; 2025 Souangah Yao Jean Serge. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/2250150961134?text=Bonjour%20Souangah%2C%20je%20viens%20de%20voir%20votre%20portfolio%20de%20d%C3%A9veloppeur%20junior." 
+                           target="_blank" 
+                           class="social-icon whatsapp-icon" 
+                           title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling avec offset navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll(); // Initial check
+
+        // Animation de la barre de progression
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        }
+
+        // Observer pour animer les barres de progression quand elles sont visibles
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('#skills').forEach(section => {
+            progressObserver.observe(section);
+        });
+
+        // Typing effect pour le titre
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            setTimeout(typeWriter, 500);
+        }
+    </script>
+</body>
+</html>
