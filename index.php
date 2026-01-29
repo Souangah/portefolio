@@ -619,7 +619,7 @@
                     <p class="hero-subtitle">Développeur Junior Full-Stack 
                         <span class="junior-tag">Junior</span>
                     </p>
-                    <p class="lead mb-4">Jeune développeur passionné de 22 ans, je crée des applications web et mobiles avec enthousiasme et rigueur. Curieux et motivé, je cherche à apprendre et progresser chaque jour.</p>
+                    <p class="lead mb-4">Jeune développeur passionné, je crée des applications web et mobiles avec enthousiasme et rigueur. Curieux et motivé, je cherche à apprendre et progresser chaque jour.</p>
                     <div class="d-flex flex-wrap gap-3 mt-4">
                         <a href="https://wa.me/2250150961134?text=Bonjour%20Souangah%2C%20je%20viens%20de%20voir%20votre%20portfolio%20et%20je%20souhaite%20discuter%20d'un%20projet." 
                            target="_blank" 
@@ -627,7 +627,7 @@
                             <i class="fab fa-whatsapp me-2"></i>Me contacter sur WhatsApp
                         </a>
                         <!-- Si le CV est dans un dossier "docs" à côté de index.html -->
-                        <a href="docs/cv.pdf" download="Souangah_Yao_CV.pdf" class="btn btn-outline-primary">
+                        <a href="docs/Souangah.pdf" download="Souangah_Yao_CV.pdf" class="btn btn-outline-primary">
                             <i class="fas fa-download me-2"></i>Télécharger CV
                         </a>
                     </div>
@@ -646,7 +646,7 @@
                         <p class="mb-4">
                             Passionné par le développement web et mobile, je m'appelle 
                             <span class="about-highlight">Souangah Yao Jean Serge</span>, 
-                            un développeur junior de 22 ans originaire de Bouaké, en Côte d'Ivoire.
+                            un développeur junior originaire de Bouaké, en Côte d'Ivoire.
                         </p>
                         
                         <p class="mb-4">
@@ -927,7 +927,7 @@
                                     </div>
                                     <h4>Email</h4>
                                     <p class="text-secondary mb-3">Pour les demandes détaillées</p>
-                                    <a href="mailto:souangahy@gmail.com?subject=Contact%20-%20Portfolio%20D%C3%A9veloppeur%20Junior&body=Bonjour%20Souangah%2C%0A%0AJe%20viens%20de%20voir%20votre%20portfolio%20et%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20votre%20profil%20de%20d%C3%A9veloppeur%20junior.%0A%0APouvons-nous%20en%20discuter%20%3F%0A%0ACordialement%2C" 
+                                    <a href="mailto:souangahy@gmail.com?subject=Contact%20-%20Développeur%20D%C3%A9Souangah&body=Bonjour%20Souangah%2C%0A%0AJe%20viens%20de%20voir%20votre%20portfolio%20et%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20votre%20profil%20de%20d%C3%A9veloppeur%20junior.%0A%0APouvons-nous%20en%20discuter%20%3F%0A%0ACordialement%2C" 
                                        class="btn btn-primary">
                                         <i class="fas fa-envelope me-2"></i>Envoyer un email
                                     </a>
@@ -959,14 +959,12 @@
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="social-links">
-                        <a href="#" class="social-icon" title="LinkedIn">
+                        <a href="https://www.linkedin.com/in/yao-jean-serge-souangah-4a3623354" class="social-icon" title="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="social-icon" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-icon" title="Twitter">
-                            <i class="fab fa-twitter"></i>
+                       
+                        <a href="https://www.facebook.com/profile.php?id=100086938233364" class="social-icon" title="facebook">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="https://wa.me/2250150961134?text=Bonjour%20Souangah%2C%20je%20viens%20de%20voir%20votre%20portfolio%20de%20d%C3%A9veloppeur%20junior." 
                            target="_blank" 
